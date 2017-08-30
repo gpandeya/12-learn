@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+  
   protect_from_forgery with: :exception
   before_action :get_user, :log_auth
   
@@ -6,10 +8,11 @@ class ApplicationController < ActionController::Base
   private
   
   def log_auth
-    data ={uid: nil, email: nil, role: nil, controller: controller_name, action: action_name, params: request.params.to_h, time: Time.now}
+    data ={uid: nil, email: nil, role: nil, controller: controller_name, action: action_name, params: request.params.to_s, datetime: Time.now.to_s}
+    #data ={uid: nil, email: nil, role: nil, controller: controller_name, action: action_name, params: request.params.to_s}
     data= data.merge ({uid: @user.id, email: @user.email, role: @user.role}) if @user
-    #final =data.merge(user)
-    ap data
+    PushLogsJob.perform_later(data)
+    
   end
   
 

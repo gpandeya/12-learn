@@ -36,6 +36,7 @@ gem 'popper_js'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-sass'
+gem 'httparty'
 
 group :development, :test do
   gem 'pry'

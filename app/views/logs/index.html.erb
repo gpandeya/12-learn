@@ -1,0 +1,24 @@
+hello!'
+<table>
+    <thead>
+    <td>email</td>
+    <td>role</td>
+    <td>Controller</td>
+    <td>Action</td>
+    <td>Params</td>
+</thead>
+<tbody>
+    <% @logs.each do |l| %>
+    <tr>
+    <td> <%= l['email'] %></td>
+    <td> <%= l['role'] %></td>
+    <td> <%= l['controller'] %></td>
+    <td> <%= l['action'] %></td>
+    <td> <%= l['params'] %></td>
+    </tr>
+    <% end %>
+    
+</tbody>
+    
+</table>
+
